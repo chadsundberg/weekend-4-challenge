@@ -16,6 +16,7 @@ $(document).ready(function(){
           $newTask.append('<td>' + currentTask.task_name + '</td>');
           // $newTask.append('<td>' + currentTask.task_completed + '</td>');
           $newTask.append('<td><button class="deleteButton">Delete</button></td>');
+          $newTask.addClass('green');
           $('#taskList').append($newTask);
           console.log($newTask);
         } else {
@@ -24,6 +25,7 @@ $(document).ready(function(){
           // $newTask.append('<td>' + currentTask.task_completed + '</td>');
           $newTask.append('<td><button class="completeButton">Complete</button></td>');
           $newTask.append('<td><button class="deleteButton">Delete</button></td>');
+          $newTask.addClass('salmon');
           $('#taskList').append($newTask);
           console.log($newTask);
           }
