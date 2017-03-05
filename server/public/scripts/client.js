@@ -13,7 +13,7 @@ $(document).ready(function(){
           var $newTask = $('<tr>');
           $newTask.data('id', currentTask.id);
           $newTask.append('<td>' + currentTask.task_name + '</td>');
-          $newTask.append('<td><button class="completeButton">Completed</button>' + currentTask.task_completed + '</td>');
+          $newTask.append('<td><button class="completeButton">Complete</button></td>');
           $newTask.append('<td><button class="deleteButton">Delete</button></td>');
           $('#taskList').append($newTask);
           console.log($newTask);
@@ -26,12 +26,9 @@ $(document).ready(function(){
       event.preventDefault();
       var newTaskObject = {
         taskName: $('#newTaskName').val(),
-        completed: $('#newTaskCompleted').val()
+        completed: false                   //$('#newTaskCompleted').val(false)
       };
       console.log(newTaskObject);
-
-
-
       $.ajax({
         type: 'POST',
         url: '/tasks/new',
@@ -41,6 +38,7 @@ $(document).ready(function(){
           getTaskData();
         }
       });
+      $('#newTaskName').val('');
     });
 
     $('#taskList').on('click', '.deleteButton', function(){
