@@ -53,6 +53,29 @@ router.post('/new', function(req, res){
   });
 });
 
+router.put('/update/:id', function(req, res){
+  var taskId = req.params.id;
+  console.log('id of task to update: ', taskId);
+  pool.connect(function(errorConnectingToDatabase, client, done){
+    if(errorConnectingToDatabase) {
+      console.log('Error connecting to database: ', errorConnectingToDatabase);
+      res.sendStatus(500);
+    } else {
+      client.query('UPDATE tasks SET task_completed=true WHERE id=$1;', // $1 tells the server to look to the array for [bookId] ajax talks to SQL to do a query
+        [taskId], // this is the array of things that replaces the $1, $2, $3 in the query
+        function(errorMakingQuery, result){
+          done();
+          if(errorMakingQuery) {
+            console.log('Error making the database query: ', errorMakingQuery);
+            res.sendStatus(500);
+          } else {
+            res.sendStatus(201);
+          }
+        });
+    }
+  });
+});
+
 router.delete('/delete/:id', function(req, res){
   var taskId = req.params.id;
   console.log('book of id to delete: ', taskId);

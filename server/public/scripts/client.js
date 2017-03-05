@@ -11,16 +11,27 @@ $(document).ready(function(){
         for (var i = 0; i < response.length; i++) {
           var currentTask = response[i];
           var $newTask = $('<tr>');
+          if (currentTask.task_completed === true) {
           $newTask.data('id', currentTask.id);
           $newTask.append('<td>' + currentTask.task_name + '</td>');
+          // $newTask.append('<td>' + currentTask.task_completed + '</td>');
+          $newTask.append('<td><button class="deleteButton">Delete</button></td>');
+          $('#taskList').append($newTask);
+          console.log($newTask);
+        } else {
+          $newTask.data('id', currentTask.id);
+          $newTask.append('<td>' + currentTask.task_name + '</td>');
+          // $newTask.append('<td>' + currentTask.task_completed + '</td>');
           $newTask.append('<td><button class="completeButton">Complete</button></td>');
           $newTask.append('<td><button class="deleteButton">Delete</button></td>');
           $('#taskList').append($newTask);
           console.log($newTask);
+          }
         }
       }
     });
   }
+
 
   $('#newTaskForm').on('submit', function(event){
       event.preventDefault();
@@ -40,6 +51,22 @@ $(document).ready(function(){
       });
       $('#newTaskName').val('');
     });
+
+    $('#taskList').on('click', '.completeButton', function(){
+        // event.preventDefault();
+        var idOfTaskToComplete = $(this).parent().parent().data().id;
+        console.log('the id of task to complete is ', idOfTaskToComplete);
+        $.ajax({
+          type: 'PUT',
+          url: '/tasks/update/' + idOfTaskToComplete,
+          success: function(response){
+            console.log(response);
+            getTaskData();
+          }
+
+        })
+          // $(this).text('Completed');
+      });
 
     $('#taskList').on('click', '.deleteButton', function(){
     var idOfTaskToDelete = $(this).parent().parent().data().id;
