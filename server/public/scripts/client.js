@@ -1,7 +1,7 @@
 $(document).ready(function(){
   console.log('jquery is up!');
   getTaskData();
-  function getTaskData() {
+  function getTaskData(){
     $.ajax({
       type: 'GET',
       url: '/tasks',
@@ -15,7 +15,8 @@ $(document).ready(function(){
           $newTask.append('<td>' + currentTask.task_name + '</td>');
           $newTask.append('<td><button class="completeButton">Completed</button>' + currentTask.task_completed + '</td>');
           $newTask.append('<td><button class="deleteButton">Delete</button></td>');
-          $('#taskList').prepend($newTask);
+          $('#taskList').append($newTask);
+          console.log($newTask);
         }
       }
     });
@@ -23,12 +24,13 @@ $(document).ready(function(){
 
   $('#newTaskForm').on('submit', function(event){
       event.preventDefault();
-      var newTaskObject = {};
-      var formFields = $(this).serializeArray();
+      var newTaskObject = {
+        taskName: $('#newTaskName').val(),
+        completed: $('#newTaskCompleted').val()
+      };
+      console.log(newTaskObject);
 
-      formFields.forEach(function (field) {
-        newTaskObject[field.name] = field.value;
-      });
+
 
       $.ajax({
         type: 'POST',
@@ -37,7 +39,6 @@ $(document).ready(function(){
         success: function(response){
           console.log(response);
           getTaskData();
-          $('#newTaskForm > input').val('');
         }
       });
     });
@@ -47,7 +48,7 @@ $(document).ready(function(){
     console.log('the id to delete is: ', idOfTaskToDelete);
     $.ajax({
       type: 'DELETE',
-      url: '/tasks/delete/' + idOfTaskToDelete, // optional parameter
+      url: '/tasks/delete/' + idOfTaskToDelete,
       success: function(response) {
         console.log(response);
         getTaskData();

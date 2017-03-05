@@ -17,7 +17,7 @@ router.get('/', function(req, res){
       console.log('Error connecting to database: ', errorConnectingToDatabase);
       res.sendStatus(500);
     } else {
-      client.query('SELECT * FROM "tasks";', function(errorMakingQuery, result){
+      client.query('SELECT * FROM tasks;', function(errorMakingQuery, result){
         done();
         if(errorMakingQuery) {
           console.log('Error making the database query: ', errorMakingQuery);
@@ -32,14 +32,14 @@ router.get('/', function(req, res){
 
 router.post('/new', function(req, res){
   var newTask = req.body;
-
+  console.log(newTask);
   pool.connect(function(errorConnectingToDatabase, client, done){
     if(errorConnectingToDatabase) {
       console.log('Error connecting to database: ', errorConnectingToDatabase);
       res.sendStatus(500);
     } else {
       client.query('INSERT INTO tasks (task_name, task_completed) VALUES ($1, $2);',
-        [newTask.task_name, newTask.task_completed],
+        [newTask.taskName, newTask.completed],
         function(errorMakingQuery, result){
           done();
           if(errorMakingQuery) {
