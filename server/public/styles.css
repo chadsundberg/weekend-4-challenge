@@ -12,9 +12,21 @@ h1 {
   box-shadow: 10px 5px 10px 5px rgba(0, 0, 50, 0.97);
 }
 
+#background {
+	width: 100%;
+	height: 100%;
+	position: fixed;
+	opacity: 0.75;
+	left: 0px;
+	top: 0px;
+	z-index: -1;
+}
+
+
 #page {
   text-align: center;
   background-color: #d2a679;
+  opacity: 0.75;
   font-family: fantasy;
   margin: 20px 20px;
   border-width: thin;
