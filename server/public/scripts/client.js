@@ -73,6 +73,7 @@ $(document).ready(function(){
     $('#taskList').on('click', '.deleteButton', function(){
     var idOfTaskToDelete = $(this).parent().parent().data().id;
     console.log('the id to delete is: ', idOfTaskToDelete);
+    // myFunction();
     $.ajax({
       type: 'DELETE',
       url: '/tasks/delete/' + idOfTaskToDelete,
@@ -83,3 +84,9 @@ $(document).ready(function(){
     })
   });
 });
+
+
+
+// function myFunction() {
+//   alert('Are you sure?');
+// }

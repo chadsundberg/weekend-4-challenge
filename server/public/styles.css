@@ -1,3 +1,54 @@
+h1 {
+  text-align: center;
+  font-family: fantasy;
+  margin: 20px 20px;
+  border-width: thick;
+  border-style: groove;
+  border-radius: 8px;
+  transform: rotate(1deg);
+  background-color: #666699;
+  -webkit-box-shadow: 10px 5px 10px 5px rgba(0, 0, 50, 0.97);
+	-moz-box-shadow: 10px 5px 10px 5px rgba(0, 0, 50, 0.97);
+	box-shadow: 10px 5px 10px 5px rgba(0, 0, 50, 0.97);
+}
+
+#page {
+  text-align: center;
+  background-color: #d2a679;
+  font-family: fantasy;
+  margin: 20px 20px;
+  border-width: thin;
+  border-style: dotted;
+  border-radius: 15px;
+  -webkit-box-shadow: 20px 10px 20px 10px rgba(0, 0, 50, 0.97);
+	-moz-box-shadow: 20px 10px 20px 10px rgba(0, 0, 50, 0.97);
+	box-shadow: 20px 10px 20px 10px rgba(0, 0, 50, 0.97);
+
+}
+
+#newTaskName {
+  width: 60%;
+  border-radius: 10px;
+  justify-content: center;
+  transform: rotate(-1deg);
+  margin: 20px 30px 30px 20px;
+  -webkit-box-shadow: 10px 5px 10px 5px rgba(0, 0, 50, 0.97);
+	-moz-box-shadow: 10px 5px 10px 5px rgba(0, 0, 50, 0.97);
+	box-shadow: 10px 5px 10px 5px rgba(0, 0, 50, 0.97);
+}
+
+th {
+  padding-right: 40px;
+  width: 100%;
+  background-color: #b3cccc;
+  border-radius: 10px;
+}
+
+button {
+  border-radius: 7px;
+  background-color: inherit;
+}
+
 .green {
   background-color: #99ff99;
 }
