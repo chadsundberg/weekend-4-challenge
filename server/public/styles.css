@@ -30,8 +30,14 @@ h1 {
   width: 60%;
   border-radius: 10px;
   justify-content: center;
-  transform: rotate(-1deg);
   margin: 20px 30px 30px 20px;
+  -webkit-box-shadow: 10px 5px 10px 5px rgba(0, 0, 50, 0.97);
+	-moz-box-shadow: 10px 5px 10px 5px rgba(0, 0, 50, 0.97);
+	box-shadow: 10px 5px 10px 5px rgba(0, 0, 50, 0.97);
+}
+
+#newTaskButton {
+  transform: rotate(1deg);
   -webkit-box-shadow: 10px 5px 10px 5px rgba(0, 0, 50, 0.97);
 	-moz-box-shadow: 10px 5px 10px 5px rgba(0, 0, 50, 0.97);
 	box-shadow: 10px 5px 10px 5px rgba(0, 0, 50, 0.97);
