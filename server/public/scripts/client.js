@@ -12,22 +12,20 @@ $(document).ready(function(){
           var currentTask = response[i];
           var $newTask = $('<tr>');
           if (currentTask.task_completed === true) {
-          $newTask.data('id', currentTask.id);
-          $newTask.append('<td>' + currentTask.task_name + '</td>');
-          // $newTask.append('<td>' + currentTask.task_completed + '</td>');
-          $newTask.append('<td><button class="deleteButton">Delete</button></td>');
-          $newTask.addClass('green');
-          $('#taskList').append($newTask);
-          console.log($newTask);
-        } else {
-          $newTask.data('id', currentTask.id);
-          $newTask.append('<td>' + currentTask.task_name + '</td>');
-          // $newTask.append('<td>' + currentTask.task_completed + '</td>');
-          $newTask.append('<td><button class="completeButton">Complete</button></td>');
-          $newTask.append('<td><button class="deleteButton">Delete</button></td>');
-          $newTask.addClass('salmon');
-          $('#taskList').append($newTask);
-          console.log($newTask);
+            $newTask.data('id', currentTask.id);
+            $newTask.append('<td>' + currentTask.task_name + '</td>');
+            $newTask.append('<td><button class="deleteButton">Delete</button></td>');
+            $newTask.addClass('green');
+            $('#taskList').append($newTask);
+            console.log($newTask);
+          } else {
+            $newTask.data('id', currentTask.id);
+            $newTask.append('<td>' + currentTask.task_name + '</td>');
+            $newTask.append('<td><button class="completeButton">Complete</button></td>');
+            $newTask.append('<td><button class="deleteButton">Delete</button></td>');
+            $newTask.addClass('salmon');
+            $('#taskList').append($newTask);
+            console.log($newTask);
           }
         }
       }
@@ -36,44 +34,40 @@ $(document).ready(function(){
 
 
   $('#newTaskForm').on('submit', function(event){
-      event.preventDefault();
-      var newTaskObject = {
-        taskName: $('#newTaskName').val(),
-        completed: false                   //$('#newTaskCompleted').val(false)
-      };
-      console.log(newTaskObject);
-      $.ajax({
-        type: 'POST',
-        url: '/tasks/new',
-        data: newTaskObject,
-        success: function(response){
-          console.log(response);
-          getTaskData();
-        }
-      });
-      $('#newTaskName').val('');
+    event.preventDefault();
+    var newTaskObject = {
+      taskName: $('#newTaskName').val(),
+      completed: false
+    };
+    console.log(newTaskObject);
+    $.ajax({
+      type: 'POST',
+      url: '/tasks/new',
+      data: newTaskObject,
+      success: function(response){
+        console.log(response);
+        getTaskData();
+      }
     });
+    $('#newTaskName').val('');
+  });
 
-    $('#taskList').on('click', '.completeButton', function(){
-        // event.preventDefault();
-        var idOfTaskToComplete = $(this).parent().parent().data().id;
-        console.log('the id of task to complete is ', idOfTaskToComplete);
-        $.ajax({
-          type: 'PUT',
-          url: '/tasks/update/' + idOfTaskToComplete,
-          success: function(response){
-            console.log(response);
-            getTaskData();
-          }
+  $('#taskList').on('click', '.completeButton', function(){
+    var idOfTaskToComplete = $(this).parent().parent().data().id;
+    console.log('the id of task to complete is ', idOfTaskToComplete);
+    $.ajax({
+      type: 'PUT',
+      url: '/tasks/update/' + idOfTaskToComplete,
+      success: function(response){
+        console.log(response);
+        getTaskData();
+      }
+    })
+  });
 
-        })
-          // $(this).text('Completed');
-      });
-
-    $('#taskList').on('click', '.deleteButton', function(){
+  $('#taskList').on('click', '.deleteButton', function(){
     var idOfTaskToDelete = $(this).parent().parent().data().id;
     console.log('the id to delete is: ', idOfTaskToDelete);
-    // myFunction();
     $.ajax({
       type: 'DELETE',
       url: '/tasks/delete/' + idOfTaskToDelete,
@@ -84,9 +78,3 @@ $(document).ready(function(){
     })
   });
 });
-
-
-
-// function myFunction() {
-//   alert('Are you sure?');
-// }

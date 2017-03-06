@@ -8,8 +8,8 @@ h1 {
   transform: rotate(1deg);
   background-color: #666699;
   -webkit-box-shadow: 10px 5px 10px 5px rgba(0, 0, 50, 0.97);
-	-moz-box-shadow: 10px 5px 10px 5px rgba(0, 0, 50, 0.97);
-	box-shadow: 10px 5px 10px 5px rgba(0, 0, 50, 0.97);
+  -moz-box-shadow: 10px 5px 10px 5px rgba(0, 0, 50, 0.97);
+  box-shadow: 10px 5px 10px 5px rgba(0, 0, 50, 0.97);
 }
 
 #page {
@@ -19,29 +19,29 @@ h1 {
   margin: 20px 20px;
   border-width: thin;
   border-style: dotted;
-  border-radius: 15px;
+  border-radius: 10px;
   -webkit-box-shadow: 20px 10px 20px 10px rgba(0, 0, 50, 0.97);
-	-moz-box-shadow: 20px 10px 20px 10px rgba(0, 0, 50, 0.97);
-	box-shadow: 20px 10px 20px 10px rgba(0, 0, 50, 0.97);
+  -moz-box-shadow: 20px 10px 20px 10px rgba(0, 0, 50, 0.97);
+  box-shadow: 20px 10px 20px 10px rgba(0, 0, 50, 0.97);
 
 }
 
 #newTaskName {
   width: 60%;
-  border-radius: 10px;
+  border-radius: 5px;
   justify-content: center;
   margin: 20px 20px 20px 5px;
   -webkit-box-shadow: 10px 5px 10px 5px rgba(0, 0, 50, 0.97);
-	-moz-box-shadow: 10px 5px 10px 5px rgba(0, 0, 50, 0.97);
-	box-shadow: 10px 5px 10px 5px rgba(0, 0, 50, 0.97);
+  -moz-box-shadow: 10px 5px 10px 5px rgba(0, 0, 50, 0.97);
+  box-shadow: 10px 5px 10px 5px rgba(0, 0, 50, 0.97);
 }
 
 #newTaskButton {
   margin: 20px 20px 20px 5px;
   transform: rotate(1deg);
   -webkit-box-shadow: 10px 5px 10px 5px rgba(0, 0, 50, 0.97);
-	-moz-box-shadow: 10px 5px 10px 5px rgba(0, 0, 50, 0.97);
-	box-shadow: 10px 5px 10px 5px rgba(0, 0, 50, 0.97);
+  -moz-box-shadow: 10px 5px 10px 5px rgba(0, 0, 50, 0.97);
+  box-shadow: 10px 5px 10px 5px rgba(0, 0, 50, 0.97);
 }
 
 th {
@@ -62,4 +62,13 @@ button {
 
 .salmon {
   background-color: #ff9999;
+}
+
+td {
+  border-radius: 5px;
+}
+
+table {
+  background-color: #ffffcc;
+  border-radius: 5px;
 }
